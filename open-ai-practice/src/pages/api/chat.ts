@@ -6,11 +6,14 @@ type Data = {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+
+  const { prompt } = req.body;
+
   const completion = await openai.chat.completions.create({
     model: "gpt-4o-mini",
     messages: [{ 
       role: "user", 
-      content: "Tell me a three sentence bedtime story about a unicorn." 
+      content: prompt || "Tell me a three sentence bedtime story about a unicorn." 
     }],
     temperature: 0.7,
   });
