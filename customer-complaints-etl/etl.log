@@ -1,0 +1,17 @@
+2025-07-21 09:40:05,021 - src.extract.data_generator - INFO - Generating 10 mock complaint records
+2025-07-21 09:40:05,022 - src.extract.data_generator - INFO - Generated 3 customers and 10 complaints
+2025-07-21 09:40:05,022 - src.extract.data_generator - INFO - Generating 5 mock complaint records
+2025-07-21 09:40:05,022 - src.extract.data_generator - INFO - Generated 1 customers and 5 complaints
+2025-07-21 09:40:05,022 - src.transform.data_transformer - INFO - Starting data transformation process
+2025-07-21 09:40:05,023 - src.transform.data_transformer - INFO - Input data: 1 customers, 5 complaints
+2025-07-21 09:40:05,033 - src.transform.data_transformer - INFO - Removed 0 invalid complaint records
+2025-07-21 09:40:05,033 - src.transform.data_transformer - INFO - Removed 0 invalid customer records
+2025-07-21 09:40:05,035 - src.transform.data_transformer - INFO - Data quality for customers: {'total_records': 1, 'missing_values': {'customer_uuid': 0, 'age_group': 0, 'region': 0, 'customer_type': 0, 'gender': 0}, 'duplicate_uuids': 0, 'invalid_age_groups': 0, 'invalid_regions': 0}
+2025-07-21 09:40:05,036 - src.transform.data_transformer - INFO - Data quality for complaints: {'total_records': 5, 'missing_values': {'complaint_uuid': 0, 'customer_uuid': 0, 'complaint_type': 0, 'severity': 0, 'complaint_text': 0, 'complaint_date': 0, 'complaint_year': 0, 'complaint_month': 0, 'complaint_day_of_week': 0, 'complaint_hour': 0, 'complaint_age_days': 0, 'complaint_text_length': 0, 'complaint_word_count': 0, 'severity_numeric': 0, 'is_high_priority': 0}, 'duplicate_uuids': 0, 'invalid_severities': 0, 'invalid_types': 0, 'future_dates': 0}
+2025-07-21 09:40:05,036 - src.transform.data_transformer - INFO - Data transformation completed successfully
+2025-07-21 09:40:15,737 - __main__ - INFO - Running extract phase only
+2025-07-21 09:40:15,737 - __main__ - INFO - === EXTRACT PHASE ===
+2025-07-21 09:40:15,737 - src.extract.data_generator - INFO - Generating 50 mock complaint records
+2025-07-21 09:40:15,739 - src.extract.data_generator - INFO - Generated 16 customers and 50 complaints
+2025-07-21 09:40:15,741 - src.extract.data_generator - INFO - Data saved to data/extracted_complaints.json
+2025-07-21 09:40:15,741 - __main__ - INFO - Extract phase completed: {'phase': 'extract', 'status': 'success', 'records_generated': 50, 'customers_generated': 16, 'completed_at': '2025-07-21T09:40:15.741636'}
