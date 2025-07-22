@@ -34,6 +34,21 @@ services:
       - postgres
     restart: unless-stopped
 
+  python-server:
+    image: python:3.12.11-bullseye
+    container_name: complaints_python
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ["/bin/sh", "start.sh"]
+    environment:
+      - PYTHONPATH=/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
 volumes:
   postgres_data:
     driver: local
