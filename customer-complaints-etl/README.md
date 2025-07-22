@@ -60,7 +60,7 @@ customer-complaints-etl/
 
 ### 1. Prerequisites
 
-- Python 3.8+
+- Python <= 3.12.*
 - Docker and Docker Compose (for PostgreSQL)
 - Git
 
