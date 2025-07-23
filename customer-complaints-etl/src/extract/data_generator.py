@@ -2,7 +2,6 @@
 Mock data generator for customer complaints
 """
 import json
-import csv
 import uuid
 import random
 import logging
@@ -146,7 +145,7 @@ class ComplaintDataGenerator:
         
         customers = []
         complaints = []
-        
+
         # Generate unique customers (fewer customers than complaints for realism)
         num_customers = max(1, num_records // 3)  # Each customer has ~3 complaints on average
         
@@ -176,10 +175,6 @@ class ComplaintDataGenerator:
     
     def save_data(self, dataset, output_path='data/mock_complaints'):
         """Save generated data to file"""
-        import os
-        
-        # Create output directory if it doesn't exist
-        os.makedirs(os.path.dirname(output_path) if os.path.dirname(output_path) else 'data', exist_ok=True)
         
         output_format = self.etl_config['output_format'].lower()
         

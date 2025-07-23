@@ -9,19 +9,19 @@ load_dotenv()
 
 # Database configuration
 DATABASE_CONFIG = {
-    'host': os.getenv('DB_HOST', 'localhost'),
-    'port': os.getenv('DB_PORT', '5432'),
-    'database': os.getenv('DB_NAME', 'complaints_db'),
-    'user': os.getenv('DB_USER', 'postgres'),
-    'password': os.getenv('DB_PASSWORD', 'password')
+    'host': os.getenv('DB_HOST'),
+    'port': os.getenv('DB_PORT'),
+    'database': os.getenv('DB_NAME'),
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD')
 }
 
 # ETL configuration
 ETL_CONFIG = {
-    'batch_size': int(os.getenv('BATCH_SIZE', '100')),
-    'mock_data_size': int(os.getenv('MOCK_DATA_SIZE', '1000')),
-    'output_format': os.getenv('OUTPUT_FORMAT', 'json'),  # json or csv
-    'data_output_path': os.getenv('DATA_OUTPUT_PATH', 'data/'),
+    'batch_size': int(os.getenv('BATCH_SIZE')),
+    'mock_data_size': int(os.getenv('MOCK_DATA_SIZE')),
+    'output_format': os.getenv('OUTPUT_FORMAT'),  # json or csv
+    'data_output_path': os.getenv('DATA_OUTPUT_PATH'),
 }
 
 # Data generation settings
@@ -45,7 +45,7 @@ DATA_GENERATION = {
 
 # Logging configuration
 LOGGING_CONFIG = {
-    'level': os.getenv('LOG_LEVEL', 'INFO'),
+    'level': os.getenv('LOG_LEVEL'),
     'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    'file': os.getenv('LOG_FILE', 'etl.log')
+    'file': os.getenv('LOG_FILE')
 }

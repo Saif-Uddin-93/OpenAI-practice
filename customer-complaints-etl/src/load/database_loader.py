@@ -3,7 +3,6 @@ Database loader module for customer complaints ETL
 """
 import pandas as pd
 import logging
-import psycopg2
 from sqlalchemy import text
 from typing import Dict, Tuple
 from config.database import db_manager

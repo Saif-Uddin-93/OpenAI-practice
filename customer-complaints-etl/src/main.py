@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 
 # Add project root to Python path
-project_root = Path(__file__).parent.parent
+project_root = Path(__file__).parent.parent # ../../customer-complaints-etl/ 
 sys.path.append(str(project_root))
 
 from config.settings import LOGGING_CONFIG, ETL_CONFIG
