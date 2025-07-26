@@ -1,0 +1,29 @@
+# Azure Configuration
+resource_group_name = "rg-customer-complaints-etl-dev"
+location           = "East US"
+
+# Tags
+tags = {
+  Environment = "dev"
+  Project     = "customer-complaints-etl"
+  Owner       = "data-team"
+  CostCenter  = "engineering"
+}
+
+# Databricks Configuration
+databricks_sku         = "standard"
+databricks_cluster_name = "etl-cluster-dev"
+databricks_node_type   = "Standard_DS3_v2"
+databricks_min_workers = 1
+databricks_max_workers = 3
+databricks_spark_version = "13.3.x-scala2.12"
+
+# SQL Database Configuration
+sql_admin_username = "sqladmin"
+sql_admin_password = "YourSecurePassword123!"  # Change this!
+sql_database_name  = "complaints_db"
+
+# ETL Configuration
+etl_schedule_cron = "0 2 * * *"  # Daily at 2 AM UTC
+enable_auto_termination = true
+auto_termination_minutes = 30
