@@ -161,3 +161,60 @@ resource "azurerm_key_vault_secret" "databricks_host" {
 
   depends_on = [azurerm_key_vault.main]
 }
+
+resource "azurerm_network_interface" "main" {
+  name                = "etl-vm-nic"
+  location            = azurerm_resource_group.main.location
+  resource_group_name = azurerm_resource_group.main.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.main.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
+resource "azurerm_linux_virtual_machine" "etl_vm" {
+  name                = "etl-vm"
+  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.main.location
+  size                = "Standard_E32ds_v5" # 32 vCPUs, 256GB RAM
+  admin_username      = "azureuser"
+  network_interface_ids = [
+    azurerm_network_interface.main.id
+  ]
+
+  admin_ssh_key {
+    username   = "azureuser"
+    public_key = file("/Users/saif.uddin/.ssh/id_rsa.pub")
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Premium_LRS"
+    disk_size_gb         = 1024 # 1TB SSD
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-focal"
+    sku       = "20_04-lts"
+    version   = "latest"
+  }
+
+  tags = var.tags
+}
+
+resource "azurerm_virtual_network" "main" {
+  name                = "etl-vnet"
+  address_space       = ["10.0.0.0/16"]
+  location            = azurerm_resource_group.main.location
+  resource_group_name = azurerm_resource_group.main.name
+}
+
+resource "azurerm_subnet" "main" {
+  name                 = "etl-subnet"
+  resource_group_name  = azurerm_resource_group.main.name
+  virtual_network_name = azurerm_virtual_network.main.name
+  address_prefixes     = ["10.0.1.0/24"]
+}

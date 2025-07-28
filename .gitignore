@@ -2,6 +2,10 @@
 venv
 data
 etl.log
+.terraform
+.terraform.lock.hcl
+terraform.tfvars
+
 
 # dependencies
 /node_modules
